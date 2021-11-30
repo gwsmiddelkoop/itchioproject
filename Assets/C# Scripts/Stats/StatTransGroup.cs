@@ -1,0 +1,46 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StatTransGroup
+{
+    public Dictionary<StatTypes, List<StatTransBase>> stats = new Dictionary<StatTypes, List<StatTransBase>>();
+
+    public StatTransGroup()
+    {
+        for (int i = 0; i < System.Enum.GetNames(typeof(StatTypes)).Length + 1; i++)
+        {
+            stats.Add((StatTypes)i, new List<StatTransBase>());
+        }       
+    }
+
+    public StatTransGroup(List<StatTransBase> statList)
+    {
+        for (int i = 0; i < System.Enum.GetNames(typeof(StatTypes)).Length; i++)
+        {
+            stats.Add((StatTypes)i, new List<StatTransBase>());
+        }
+
+        for (int i = 0; i < statList.Count; i++)
+        {
+            stats[statList[i].statType].Add(statList[i]);
+        }
+    }
+
+    public StatGroup TransformStatGroup()
+    {
+        StatGroup statGroup = new StatGroup();
+
+        for (int curStatTypeInt = 0; curStatTypeInt < System.Enum.GetNames(typeof(StatTypes)).Length; curStatTypeInt++)
+        {
+            List<StatTransBase> curList = stats[(StatTypes)curStatTypeInt];
+
+            for (int curStatIndex = 0; curStatIndex < curList.Count; curStatIndex++)
+            {
+                statGroup = curList[curStatIndex].TransformStat(statGroup);
+            }
+        }
+
+        return statGroup;
+    }
+}
