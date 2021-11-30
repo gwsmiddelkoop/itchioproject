@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    // Static intance of the script.
+    public static GameManager instance { get; private set; }
 
     void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.LogError("There is more than one instance!");
             return;
         }
 
-        Instance = this;
+        instance = this;
     }
 }
