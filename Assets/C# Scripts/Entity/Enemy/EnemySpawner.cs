@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Vector2 spawnPosition;
 
-    private void Awake()
+    private void Start()
     {
         StartCoroutine("WaveSpawner");
     }

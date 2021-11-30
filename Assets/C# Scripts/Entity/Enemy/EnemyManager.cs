@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviour
     // Own Variables.
     private List<GameObject> enemys = new List<GameObject>();
 
-    void Awake()
+    void Start()
     {
         if (instance != null)
         {

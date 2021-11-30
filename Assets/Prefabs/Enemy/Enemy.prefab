@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8492393065942234462}
   - component: {fileID: 3914268250888106701}
+  - component: {fileID: 7892483140551343378}
+  - component: {fileID: 9062436561278539223}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -82,3 +84,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7892483140551343378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095847539694164338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487939c1c797cb44ea48132f468e78ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 0.25
+  blockedAxis: 000001
+--- !u!114 &9062436561278539223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095847539694164338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c150761e5844b584da7e9619e426d2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathNodes:
+  - {x: -4.5, y: 4.2}
+  - {x: -4.5, y: 2.2}
+  - {x: -1.7, y: 2.2}
+  - {x: -1.7, y: 4.2}
+  - {x: 1.5, y: 4.2}
+  - {x: 1.5, y: 0.2}
+  nodeRadius: 0.25
+  nodeRandomDistance: 0
+  movementSpeed: 1
