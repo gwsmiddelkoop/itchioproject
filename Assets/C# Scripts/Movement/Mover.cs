@@ -25,7 +25,7 @@ public class Mover : MonoBehaviour
 
     private void Move()
     {
-        velocity += new Vector3(ClampedLerp(velocity.x, disiredVelocity.x, acceleration), ClampedLerp(velocity.y, disiredVelocity.y, acceleration), ClampedLerp(velocity.z, disiredVelocity.z, acceleration));
+        velocity += new Vector3(ClampedLerp(velocity.x, disiredVelocity.x, acceleration/disiredVelocity.magnitude), ClampedLerp(velocity.y, disiredVelocity.y, acceleration / disiredVelocity.magnitude), ClampedLerp(velocity.z, disiredVelocity.z, acceleration / disiredVelocity.magnitude));
 
         velocity.Scale(GetBlockedAxisVector());
 

@@ -120,10 +120,16 @@ MonoBehaviour:
   - {x: 1.5, y: 4.2}
   - {x: 1.5, y: 0.2}
   - {x: -1.5, y: 0.2}
+  - {x: -1.5, y: -4}
+  - {x: 1.7, y: -4}
+  - {x: 1.7, y: -2.15}
+  - {x: 4.55, y: -2.15}
+  - {x: 4.55, y: -4}
+  - {x: 12, y: -4}
   nodeRadius: 0.25
   nodeRandomDistance: 1
   beginAtNode: 1
-  movementSpeed: 1
+  movementSpeed: 4
 --- !u!114 &-341995379179139560
 MonoBehaviour:
   m_ObjectHideFlags: 0
