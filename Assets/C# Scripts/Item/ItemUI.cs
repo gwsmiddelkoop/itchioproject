@@ -24,6 +24,18 @@ public class ItemUI : MonoBehaviour
 
     }
 
+    public void SwitchButton()
+    {
+        if (openButton.activeSelf)
+        {
+            openButton.SetActive(false);
+        }
+        else
+        {
+            openButton.SetActive(true);
+        }
+    }
+
     public void Open()
     {
         openButton.SetActive(false);

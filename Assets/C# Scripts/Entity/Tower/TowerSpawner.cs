@@ -10,15 +10,22 @@ public class TowerSpawner : MonoBehaviour
 
     // Own private variables.
     private Transform trans;
+    
+    [Header("Place Tower")]
+    public bool canPlace;
+    public GameObject tempPanel;
+    public ItemUI scriptRef;
 
     private void Awake()
     {
         trans = transform;
+
+        tempPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(mouseButtonInt))
+        if (canPlace == true && Input.GetMouseButtonDown(mouseButtonInt))
         {
             Spawn();
         }
@@ -29,5 +36,21 @@ public class TowerSpawner : MonoBehaviour
         GameObject tower = Instantiate(towerPrefab, trans);
 
         tower.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    public void TurnOn()
+    {
+        if (canPlace == true)
+        {
+            scriptRef.SwitchButton();
+            canPlace = false;
+            tempPanel.SetActive(false);
+        }
+        else
+        {
+            scriptRef.SwitchButton();
+            canPlace = true;
+            tempPanel.SetActive(true);
+        }
     }
 }
