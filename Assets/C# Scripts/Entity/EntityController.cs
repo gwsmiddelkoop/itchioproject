@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    [SerializeField] private StatTransGroupTemplate statTransGroupTemplate;
+    [SerializeField] private List<StatTransGroupTemplate> statTransGroupTemplates = new List<StatTransGroupTemplate>();
     [SerializeField] private StatGroup stats;
 
     private StatTransGroup statTransGroup;
 
     private void Awake()
     {
-        statTransGroup = new StatTransGroup(statTransGroupTemplate.statTransGroup);
+        statTransGroup = CombineAllTemplates(statTransGroupTemplates);
 
         stats = statTransGroup.TransformStatGroup();
 
         SetUp();
     }
+
+    private StatTransGroup CombineAllTemplates(List<StatTransGroupTemplate> templates)
+    {
+        if (statTransGroupTemplates != null)
+        {
+            List<StatTransBase> list = new List<StatTransBase>();
+
+            for (int i = 0; i < statTransGroupTemplates.Count; i++)
+            {
+                list.AddRange(statTransGroupTemplates[i].statTransGroup);
+            }
+
+            return new StatTransGroup(list);
+        }
+
+        return new StatTransGroup();
+    } 
 
     private void SetUp()
     {

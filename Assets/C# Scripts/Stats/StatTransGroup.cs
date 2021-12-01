@@ -16,6 +16,11 @@ public class StatTransGroup
 
     public StatTransGroup(List<StatTransBase> statList)
     {
+        AddStatsFromStatList(statList);
+    }
+
+    public void AddStatsFromStatList(List<StatTransBase> statList)
+    {
         for (int i = 0; i < System.Enum.GetNames(typeof(StatTypes)).Length; i++)
         {
             stats.Add((StatTypes)i, new List<StatTransBase>());

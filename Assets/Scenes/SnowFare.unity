@@ -372,8 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5ab029f2a1767438a1689da93dad8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wave:
-  - {fileID: 4095847539694164338, guid: 9bf9bd2adf36ee64db45604eda7311b3, type: 3}
+  waves:
+  - {fileID: 11400000, guid: 7dcf816692921a1469acb1801c84c081, type: 2}
+  - {fileID: 11400000, guid: 54520c0a501704449a5c2d86af6990ef, type: 2}
   spawnPosition: {x: -10, y: 4.2}
 --- !u!114 &1623087845
 MonoBehaviour:
