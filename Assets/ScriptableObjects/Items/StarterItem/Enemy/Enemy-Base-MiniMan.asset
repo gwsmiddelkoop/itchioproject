@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b21e2de3a311f46867a523dcabe75f, type: 3}
   m_Name: Enemy-Base-MiniMan
   m_EditorClassIdentifier: 
-  statTransGroup: []
+  statTransGroup:
+  - id: 0
   references:
     version: 1
+    00000000:
+      type: {class: StatTransSpeed, ns: , asm: Assembly-CSharp}
+      data:
+        transformType: 0
+        amount: 2

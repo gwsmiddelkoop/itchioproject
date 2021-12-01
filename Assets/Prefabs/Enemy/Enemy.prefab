@@ -117,6 +117,9 @@ MonoBehaviour:
   - {x: -4.5, y: 2.2}
   - {x: -1.7, y: 2.2}
   - {x: -1.7, y: 4.2}
+  - {x: 1.5, y: 4.2}
+  - {x: 1.5, y: 0.2}
+  - {x: -1.5, y: 0.2}
   nodeRadius: 0.25
   nodeRandomDistance: 1
   beginAtNode: 1
