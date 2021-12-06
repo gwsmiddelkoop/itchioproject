@@ -4,55 +4,65 @@ using UnityEngine;
 [System.Serializable]
 public class StatGroup
 {
-    [SerializeField] public StatGroupEntity entity = new StatGroupEntity();
+    [SerializeField] public StatGroupName name = new StatGroupName();
+    [SerializeField] public StatGroupSprite sprite = new StatGroupSprite();
+    [SerializeField] public StatGroupHealth health = new StatGroupHealth();
+    [SerializeField] public StatGroupContact contact = new StatGroupContact();
+    [SerializeField] public StatGroupMovement movement = new StatGroupMovement();
     [SerializeField] public StatGroupWeapon weapon = new StatGroupWeapon();
-    [SerializeField] public StatGroupProjectile projectile = new StatGroupProjectile();
 }
 
 [System.Serializable]
-public class StatGroupEntity
+public class StatGroupName
 {
-    [Header("Genaral Options")] // All the general options/Fundamentals.
+    public bool usage;
+
+    public string name;
+}
+
+[System.Serializable]
+public class StatGroupSprite
+{
+    public bool usage;
+
     public Sprite sprite;
+}
 
-    public int health;
-    public int healthMax;
+[System.Serializable]
+public class StatGroupHealth
+{
+    public bool usage;
 
-    [Header("Steering Options")] // All movement related Options.
-    public bool canMove;
+    public float health;
+    public float healthMax;
+}
+
+[System.Serializable]
+public class StatGroupContact
+{
+    public bool usage;
+
+    public ContactTypes contactType;
+    public float damage;
+    public bool selfDestroy;
+}
+
+[System.Serializable]
+public class StatGroupMovement
+{
+    public bool usage;
+
     public float speed;
 }
 
 [System.Serializable]
 public class StatGroupWeapon
 {
-    [Header("Genaral Options")] // All the general options/Fundamentals.
+    public bool usage;
+
     public Sprite sprite;
-
-    [Header("Steering Options")] // All movement related Options.
-    public float accuracy;
-
-    [Header("Spawning Options")] // All projectile related options.
     public float fireRate;
-    public int fireProjectileCount;
-}
-
-[System.Serializable]
-public class StatGroupProjectile
-{
-    [Header("Genaral Options")] // All the general options/Fundamentals.
-    public Sprite sprite;
-    public float damage;
-
-    [Header("Steering Options")] // All movement related Options.
-    public bool moveable;
-    public float speed;
-
-    [Header("Hitable Options")] // Conditions for hitting.
-    public bool canHitOtherProjectiles;
-
-    [Header("On Hit")] // Actions to perform when hit.
-    public ProjectileHitTypes hitType;
-    public float hitAreaRadius;
-    public bool destroyOnHit;
+    public int projectileCount;
+    public float accuracy;
+    public StatTransGroup projectile;
 }

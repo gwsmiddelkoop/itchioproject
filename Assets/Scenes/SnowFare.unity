@@ -2173,7 +2173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseButtonInt: 0
-  towerPrefab: {fileID: 6192939360231020618, guid: 910f801e381942f458d57a609f17c944, type: 3}
+  towerTemplate:
+  - {fileID: 11400000, guid: ace64f03b31a6bc4c9a5402e7801be01, type: 2}
   canPlace: 0
   tempPanel: {fileID: 678218935}
   scriptRef: {fileID: 992473432}
@@ -2184,7 +2185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623087841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef5ab029f2a1767438a1689da93dad8c, type: 3}
   m_Name: 

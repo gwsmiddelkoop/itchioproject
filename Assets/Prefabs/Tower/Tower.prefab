@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 332063716346386429}
-  - component: {fileID: 1682840421934232667}
-  - component: {fileID: 4764130217386577969}
+  - component: {fileID: -7372479633912745300}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -28,11 +27,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1682840421934232667
+--- !u!114 &-7372479633912745300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,43 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6192939360231020618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53e9c54038c88489a0872b593c4ef6, type: 3}
+  m_Script: {fileID: 11500000, guid: d3886c75c8103164b849cd2908f5d3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   statTransGroupTemplates:
   - {fileID: 11400000, guid: ace64f03b31a6bc4c9a5402e7801be01, type: 2}
-  - {fileID: 11400000, guid: 110e35a5af3ff444a9b788e5868beaa1, type: 2}
-  stats:
-    entity:
-      sprite: {fileID: 0}
-      health: 0
-      healthMax: 0
-      canMove: 0
-      speed: 0
-    weapon:
-      sprite: {fileID: 0}
-      accuracy: 0
-      fireRate: 0
-      fireProjectileCount: 0
-    projectile:
-      sprite: {fileID: 0}
-      damage: 0
-      moveable: 0
-      speed: 0
-      canHitOtherProjectiles: 0
-      hitType: 0
-      hitAreaRadius: 0
-      destroyOnHit: 0
---- !u!114 &4764130217386577969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6192939360231020618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0760d107f5da72d45b045a4ea691a082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetingType: 2

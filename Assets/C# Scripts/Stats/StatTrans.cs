@@ -2,19 +2,37 @@
 
 public enum StatTypes
 {
-    Accuracy,
-    CanHitOtherProjectiles,
-    Damage,
-    DestroyOnHit,
-    FireProjectileCount,
-    FireRate,
-    Moveable,
-    ProjectileHitType,
-    Speed,
+    NameUsage,
+    Name,
+
+    SpriteUsage,
     Sprite,
+
+    HealthUsage,
+    Health,
+    HealthMax,
+
+    ContactUsage,
+    ContactType,
+    ContactDamage,
+    ContactSelfDestroy,
+
+    MovementUsage,
+    MovementSpeed,
+
+    WeaponUsage,
+    WeaponSprite,
+    WeaponFireRate,
+    WeaponProjectileCount,
+    WeaponAccuracy,
+    WeaponProjectile,
+
+        WeaponTargetingUsage,
+        WeaponTargetingType,
+        WeaponTargetingRadius,
 }
 
-public enum ProjectileHitTypes
+public enum ContactTypes
 {
     Direct,
     Area,
@@ -27,13 +45,7 @@ public enum StatTransformTypes
     Divide,
 }
 
-public enum StatSpriteTypes
-{
-    Entity,
-    Weapon,
-    Projectile,
-}
-
+// Base Stat
 [System.Serializable]
 public abstract class StatTransBase
 {
@@ -64,41 +76,91 @@ public abstract class StatTransBase
     }
 }
 
-
-public class StatTransAccuracy : StatTransBase{
-    [HideInInspector] public override StatTypes statType => StatTypes.Accuracy;
-
-    public StatTransformTypes transformType;
-    public float amount;
-
-    public override StatGroup TransformStat(StatGroup stats)
-    {
-        stats.weapon.accuracy = CalculateTransformType(stats.weapon.accuracy, amount, transformType); ;
-
-        return stats;
-    }
-}
-
-public class StatTransCanHitOtherProjectiles : StatTransBase
+// Name
+public class StatTransNameUsage : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.CanHitOtherProjectiles;
+    [HideInInspector] public override StatTypes statType => StatTypes.NameUsage;
 
-    public bool canHitOtherProjectiles;
+    public bool usage;
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        if (canHitOtherProjectiles)
+        if (usage)
         {
-            stats.projectile.canHitOtherProjectiles = true;
+            stats.name.usage = true;
         }
 
         return stats;
     }
 }
 
-public class StatTransDamage : StatTransBase
+public class StatTransName : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.Damage;
+    [HideInInspector] public override StatTypes statType => StatTypes.Name;
+
+    public string name;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.name.name = name;
+
+        return stats;
+    }
+}
+
+// Sprite
+public class StatTransSpriteUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.SpriteUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
+        {
+            stats.sprite.usage = true;
+        }
+
+        return stats;
+    }
+}
+
+public class StatTransSprite : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.Sprite;
+
+    public Sprite sprite;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.sprite.sprite = sprite;
+
+        return stats;
+    }
+}
+
+// Health
+public class StatTransHealthUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.HealthUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
+        {
+            stats.health.usage = true;
+        }
+
+        return stats;
+    }
+}
+
+public class StatTransHealth : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.Health;
 
     public StatTransformTypes transformType;
 
@@ -106,48 +168,162 @@ public class StatTransDamage : StatTransBase
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        stats.projectile.damage = CalculateTransformType(stats.projectile.damage, amount, transformType);
+        stats.health.health = CalculateTransformType(stats.health.health, amount, transformType);
 
         return stats;
     }
 }
 
-public class StatTransDestroyOnHit : StatTransBase
+public class StatTransHealthMax : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.DestroyOnHit;
+    [HideInInspector] public override StatTypes statType => StatTypes.HealthMax;
 
-    public bool destroyOnHit;
+    public StatTransformTypes transformType;
+
+    public float amount;
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        if (!destroyOnHit)
+        stats.health.healthMax = CalculateTransformType(stats.health.healthMax, amount, transformType);
+
+        return stats;
+    }
+}
+
+// Contact
+public class StatTransContactUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.ContactUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
         {
-            stats.projectile.destroyOnHit = false;
+            stats.contact.usage = true;
         }
 
         return stats;
     }
 }
 
-public class StatTransFireProjectileCount : StatTransBase
+public class StatTransContactType : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.FireProjectileCount;
+    [HideInInspector] public override StatTypes statType => StatTypes.ContactType;
 
-    public StatTransformTypes transformType;
-
-    public int amount;
+    public ContactTypes contactType;
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        stats.weapon.fireProjectileCount = (int)CalculateTransformType(stats.weapon.fireProjectileCount, amount, transformType);
+        stats.contact.contactType = contactType;
 
         return stats;
     }
 }
 
-public class StatTransFireRate : StatTransBase
+public class StatTransContactDamage : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.FireRate;
+    [HideInInspector] public override StatTypes statType => StatTypes.ContactDamage;
+
+    public StatTransformTypes transformType;
+
+    public float amount;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.contact.damage = CalculateTransformType(stats.contact.damage, amount, transformType);
+
+        return stats;
+    }
+}
+
+public class StatTransContactSelfDestroy : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.ContactSelfDestroy;
+
+    public bool selfDestroy;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (!selfDestroy)
+        {
+            stats.contact.selfDestroy = false;
+        }
+
+        return stats;
+    }
+}
+
+// Movement
+public class StatTransMovementUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.MovementUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
+        {
+            stats.movement.usage = true;
+        }
+
+        return stats;
+    }
+}
+
+public class StatTransMovementSpeed : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.MovementSpeed;
+
+    public StatTransformTypes transformType;
+
+    public float amount;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.movement.speed = CalculateTransformType(stats.movement.speed, amount, transformType); ;
+
+        return stats;
+    }
+}
+
+// Weapon
+public class StatTransWeaponUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
+        {
+            stats.weapon.usage = true;
+        }
+
+        return stats;
+    }
+}
+
+public class StatTransWeaponSprite : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponSprite;
+
+    public Sprite sprite;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.weapon.sprite = sprite;
+
+        return stats;
+    }
+}
+
+public class StatTransWeaponFireRate : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponFireRate;
 
     public StatTransformTypes transformType;
 
@@ -161,74 +337,60 @@ public class StatTransFireRate : StatTransBase
     }
 }
 
-public class StatTransMoveable : StatTransBase
+public class StatTransWeaponProjectileCount : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.Moveable;
-
-    public bool moveable;
-
-    public override StatGroup TransformStat(StatGroup stats)
-    {
-        if (moveable)
-        {
-            stats.projectile.moveable = true;
-        }
-
-        return stats;
-    }
-}
-
-public class StatTransProjectileHitType : StatTransBase
-{
-    [HideInInspector] public override StatTypes statType => StatTypes.ProjectileHitType;
-
-    public ProjectileHitTypes projectileHitType;
-
-    public override StatGroup TransformStat(StatGroup stats)
-    {
-        stats.projectile.hitType = projectileHitType;
-
-        return stats;
-    }
-}
-
-public class StatTransSpeed : StatTransBase
-{
-    [HideInInspector] public override StatTypes statType => StatTypes.Speed;
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponProjectileCount;
 
     public StatTransformTypes transformType;
 
+    public int amount;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.weapon.projectileCount = (int)CalculateTransformType(stats.weapon.projectileCount, amount, transformType);
+
+        return stats;
+    }
+}
+
+public class StatTransWeaponAccuracy : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponAccuracy;
+
+    public StatTransformTypes transformType;
     public float amount;
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        stats.projectile.speed = CalculateTransformType(stats.projectile.speed, amount, transformType); ;
+        stats.weapon.accuracy = CalculateTransformType(stats.weapon.accuracy, amount, transformType); ;
 
         return stats;
     }
 }
 
-public class StatTransSprite : StatTransBase
+public class StatTransWeaponProjectile : StatTransBase
 {
-    [HideInInspector] public override StatTypes statType => StatTypes.Sprite;
+    [HideInInspector] public override StatTypes statType => StatTypes.WeaponProjectile;
 
-    public Sprite sprite;
+    public StatTransGroupTemplate projectile;
 
-    public StatSpriteTypes spriteType;
+    public bool set;
 
     public override StatGroup TransformStat(StatGroup stats)
     {
-        switch (spriteType)
+        if (stats.weapon.projectile == null)
         {
-            case StatSpriteTypes.Entity:
-                stats.entity.sprite = sprite;
-                break;
-            case StatSpriteTypes.Weapon:
-                stats.weapon.sprite = sprite;
-                break;
-            case StatSpriteTypes.Projectile:
-                stats.projectile.sprite = sprite;
-                break;
+            stats.weapon.projectile = new StatTransGroup();
+        }
+
+        if (set)
+        {
+            stats.weapon.projectile.stats = null;
+            stats.weapon.projectile.AddStatsFromStatList(projectile.statTransGroup);
+        }
+        else
+        {
+            stats.weapon.projectile.AddStatsFromStatList(projectile.statTransGroup);
         }
 
         return stats;

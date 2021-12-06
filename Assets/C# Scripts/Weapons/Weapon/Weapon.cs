@@ -49,7 +49,7 @@ public class Weapon
 
     private void Fire()
     {
-        for (int i = 0; i < stats.weapon.fireProjectileCount; i++)
+        for (int i = 0; i < stats.weapon.projectileCount; i++)
         {
             CreateProjectile();
         }
@@ -57,11 +57,10 @@ public class Weapon
 
     private void CreateProjectile()
     {
-        GameObject projectileObject = new GameObject("Projectile", typeof(Projectile));
+        GameObject projectileObject = new GameObject("Projectile", typeof(EntityCreator));
         projectileObject.transform.parent = controller.transform;
 
-        Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.Initialize(stats.projectile);
+        projectileObject.GetComponent<EntityCreator>().Initialize(stats.weapon.projectile);
         projectileObject.transform.position = trans.position;
     }
 }

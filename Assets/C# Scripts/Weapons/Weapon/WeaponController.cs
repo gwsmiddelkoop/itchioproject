@@ -4,9 +4,46 @@ using System.Collections.Generic;
 
 public enum WeaponTargetingTypes
 {
-    player,
-    ai,
     test,
+    ai,
+    player,
+}
+
+
+
+public class WeaponController : MonoBehaviour
+{
+    [SerializeField] private WeaponTargetingTypes targetingType;
+
+    private WeaponTargeting targeting = new WeaponTargeting();
+
+    private StatGroup stats;
+
+    private Weapon weapon;
+
+    private Transform trans;
+
+    public void Initialize(StatGroup stats)
+    {
+        trans = transform;
+
+        this.stats = stats;
+
+        CreateWeapon(stats);
+    }
+
+    private void Update()
+    {
+        if (weapon != null)
+        {
+            weapon.CanFire(targeting.GetTargeting(targetingType));
+        }
+    }
+
+    public void CreateWeapon(StatGroup stats)
+    {
+        weapon = new Weapon(this, stats);
+    }
 }
 
 public class WeaponTargeting
@@ -15,14 +52,14 @@ public class WeaponTargeting
     {
         switch (targetingType)
         {
-            case WeaponTargetingTypes.player:
-                return TargetingPlayer();
+            case WeaponTargetingTypes.test:
+                return TargetingTest();
 
             case WeaponTargetingTypes.ai:
                 return TargetingAi();
 
-            case WeaponTargetingTypes.test:
-                return TargetingTest();
+            case WeaponTargetingTypes.player:
+                return TargetingPlayer();
         }
 
         return false;
@@ -55,37 +92,5 @@ public class WeaponTargeting
     public bool TargetingTest()
     {
         return true;
-    }
-}
-
-public class WeaponController : MonoBehaviour
-{
-    [SerializeField] private WeaponTargetingTypes targetingType;
-
-    private WeaponTargeting targeting = new WeaponTargeting();
-
-    private StatGroup stats;
-
-    private Weapon weapon;
-
-    private Transform trans;
-
-    public void Initialize(StatGroup stats)
-    {
-        trans = transform;
-
-        this.stats = stats;
-
-        CreateWeapon(stats);
-    }
-
-    private void Update()
-    {
-        weapon.CanFire(targeting.GetTargeting(targetingType));
-    }
-
-    public void CreateWeapon(StatGroup stats)
-    {
-        weapon = new Weapon(this, stats);
     }
 }

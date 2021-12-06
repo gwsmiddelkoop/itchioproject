@@ -9,7 +9,6 @@ public class EventManager : MonoBehaviour
 
     // Delegates and their events.
     public delegate void EmptyDelegate();
-    public event EmptyDelegate OnClicked;
 
     public delegate void GameObjectDelegate(GameObject gameObject);
     public event GameObjectDelegate enemySpawned;

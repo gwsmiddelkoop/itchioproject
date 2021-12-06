@@ -10,42 +10,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b21e2de3a311f46867a523dcabe75f, type: 3}
-  m_Name: Tower-Base
+  m_Name: Tower-Mini
   m_EditorClassIdentifier: 
   statTransGroup:
-  - rid: 2441891137222345015
-  - rid: 2441891137222345016
-  - rid: 2441891137222345017
-  - rid: 2441891137222345018
-  - rid: 2441891137222345019
-  - rid: 2441891137222345020
+  - rid: 2441891161167102052
+  - rid: 2441891161167102053
+  - rid: 2441891161167102054
+  - rid: 2441891161167102055
+  - rid: 2441891161167102056
+  - rid: 2441891161167102057
+  - rid: 2441891161167102058
+  - rid: 2441891161167102059
   references:
     version: 2
     RefIds:
-    - rid: 2441891137222345015
+    - rid: 2441891161167102052
       type: {class: StatTransSpriteUsage, ns: , asm: Assembly-CSharp}
       data:
         usage: 1
-    - rid: 2441891137222345016
+    - rid: 2441891161167102053
       type: {class: StatTransSprite, ns: , asm: Assembly-CSharp}
       data:
-        sprite: {fileID: 21300000, guid: 5d4e9c9fd9ee7224caa57ba5af71d346, type: 3}
-    - rid: 2441891137222345017
+        sprite: {fileID: 21300000, guid: 634081bb5a5e17d4ba3fbfc73479e6aa, type: 3}
+    - rid: 2441891161167102054
       type: {class: StatTransWeaponUsage, ns: , asm: Assembly-CSharp}
       data:
         usage: 1
-    - rid: 2441891137222345018
+    - rid: 2441891161167102055
       type: {class: StatTransWeaponFireRate, ns: , asm: Assembly-CSharp}
       data:
         transformType: 0
-        amount: 2
-    - rid: 2441891137222345019
+        amount: 1
+    - rid: 2441891161167102056
       type: {class: StatTransWeaponProjectileCount, ns: , asm: Assembly-CSharp}
       data:
         transformType: 0
         amount: 1
-    - rid: 2441891137222345020
+    - rid: 2441891161167102057
       type: {class: StatTransWeaponProjectile, ns: , asm: Assembly-CSharp}
       data:
-        projectile: {fileID: 11400000, guid: f1f480777c2fb134c8277d66c8b38031, type: 2}
-        set: 1
+        projectile: {fileID: 11400000, guid: cd4205fa7aa8c7b4a9d912496e4ebe88, type: 2}
+        set: 0
+    - rid: 2441891161167102058
+      type: {class: StatTransNameUsage, ns: , asm: Assembly-CSharp}
+      data:
+        usage: 1
+    - rid: 2441891161167102059
+      type: {class: StatTransName, ns: , asm: Assembly-CSharp}
+      data:
+        name: Tower-Mini

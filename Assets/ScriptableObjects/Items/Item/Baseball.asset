@@ -10,20 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b21e2de3a311f46867a523dcabe75f, type: 3}
-  m_Name: Baseball
+  m_Name: BaseBall
   m_EditorClassIdentifier: 
   statTransGroup:
-  - id: 0
-  - id: 1
+  - rid: 2441891122666536964
   references:
-    version: 1
-    00000000:
-      type: {class: StatTransAccuracy, ns: , asm: Assembly-CSharp}
+    version: 2
+    RefIds:
+    - rid: 2441891122666536964
+      type: {class: StatTransWeaponProjectile, ns: , asm: Assembly-CSharp}
       data:
-        transformType: 2
-        amount: 2
-    00000001:
-      type: {class: StatTransSpeed, ns: , asm: Assembly-CSharp}
-      data:
-        transformType: 1
-        amount: 1.25
+        projectile: {fileID: 0}
+        set: 1

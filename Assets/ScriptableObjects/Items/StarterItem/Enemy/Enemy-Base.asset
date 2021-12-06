@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b21e2de3a311f46867a523dcabe75f, type: 3}
-  m_Name: Enemy-Base-MiniMan
+  m_Name: Enemy-Base
   m_EditorClassIdentifier: 
   statTransGroup:
-  - id: 0
+  - rid: 2441891122666537062
+  - rid: 2441891122666537063
   references:
-    version: 1
-    00000000:
-      type: {class: StatTransSpeed, ns: , asm: Assembly-CSharp}
+    version: 2
+    RefIds:
+    - rid: 2441891122666537062
+      type: {class: StatTransSpriteUsage, ns: , asm: Assembly-CSharp}
       data:
-        transformType: 0
-        amount: 2
+        usage: 1
+    - rid: 2441891122666537063
+      type: {class: StatTransSprite, ns: , asm: Assembly-CSharp}
+      data:
+        sprite: {fileID: 21300000, guid: 5d4e9c9fd9ee7224caa57ba5af71d346, type: 3}

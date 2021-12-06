@@ -4,50 +4,70 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    [SerializeField] private List<StatTransGroupTemplate> statTransGroupTemplates = new List<StatTransGroupTemplate>();
     [SerializeField] private StatGroup stats;
 
-    private StatTransGroup statTransGroup;
+    public StatTransGroup statTransGroup;
 
-    private void Awake()
+    public void Initialize(StatTransGroup statTransGroup)
     {
-        statTransGroup = CombineAllTemplates(statTransGroupTemplates);
+        this.statTransGroup = statTransGroup;
 
         stats = statTransGroup.TransformStatGroup();
 
         SetUp();
+
+        GetComponent<EventController>().Die();
     }
-
-    private StatTransGroup CombineAllTemplates(List<StatTransGroupTemplate> templates)
-    {
-        if (statTransGroupTemplates != null)
-        {
-            List<StatTransBase> list = new List<StatTransBase>();
-
-            for (int i = 0; i < statTransGroupTemplates.Count; i++)
-            {
-                list.AddRange(statTransGroupTemplates[i].statTransGroup);
-            }
-
-            return new StatTransGroup(list);
-        }
-
-        return new StatTransGroup();
-    } 
 
     private void SetUp()
     {
-        if (stats.entity.sprite != null)
+        // Standard components.
+        gameObject.AddComponent(typeof(EventController));
+        GetComponent<EventController>().die += Die;
+
+
+        // Stat releated components.
+        if (stats.name.usage)
+        {
+            gameObject.name = stats.name.name;
+        }
+
+        if (stats.sprite.usage && stats.sprite.sprite != null)
         {
             gameObject.AddComponent(typeof(SpriteRenderer));
-            SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
-            renderer.sprite = stats.entity.sprite;
+            renderer.sprite = stats.sprite.sprite;
         }
 
-        if (TryGetComponent(out WeaponController weaponController))
+        if (stats.health.usage)
         {
-            weaponController.Initialize(stats);
+
         }
+
+        if (stats.contact.usage)
+        {
+
+        }
+
+        if (stats.movement.usage)
+        {
+
+        }
+
+        if (stats.weapon.usage)
+        {
+            gameObject.AddComponent(typeof(WeaponController));
+            WeaponController controller = GetComponent<WeaponController>();
+
+            controller.Initialize(stats);
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Death");
+
+        Destroy(gameObject);
     }
 }

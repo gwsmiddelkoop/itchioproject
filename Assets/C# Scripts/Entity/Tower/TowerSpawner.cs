@@ -6,7 +6,7 @@ public class TowerSpawner : MonoBehaviour
 {
     // Serialized variables.
     [SerializeField] private int mouseButtonInt;
-    [SerializeField] private GameObject towerPrefab;
+    [SerializeField] public List<StatTransGroupTemplate> towerTemplate = new List<StatTransGroupTemplate>();
 
     // Own private variables.
     private Transform trans;
@@ -33,8 +33,10 @@ public class TowerSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject tower = Instantiate(towerPrefab, trans);
+        GameObject tower = new GameObject("Tower", typeof(EntityCreator));
+        tower.GetComponent<EntityCreator>().Initialize(towerTemplate);
 
+        tower.transform.parent = trans;
         tower.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 

@@ -21,9 +21,19 @@ public class StatTransGroup
 
     public void AddStatsFromStatList(List<StatTransBase> statList)
     {
+        if (stats == null)
+        {
+            stats = new Dictionary<StatTypes, List<StatTransBase>>();
+        }
+
         for (int i = 0; i < System.Enum.GetNames(typeof(StatTypes)).Length; i++)
         {
-            stats.Add((StatTypes)i, new List<StatTransBase>());
+            StatTypes currentStatType = (StatTypes)i;
+
+            if (!stats.ContainsKey(currentStatType))
+            {
+                stats.Add(currentStatType, new List<StatTransBase>());
+            }
         }
 
         for (int i = 0; i < statList.Count; i++)
