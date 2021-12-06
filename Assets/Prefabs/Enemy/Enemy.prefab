@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3914268250888106701}
   - component: {fileID: 7892483140551343378}
   - component: {fileID: 9062436561278539223}
+  - component: {fileID: -341995379179139560}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -110,13 +111,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c150761e5844b584da7e9619e426d2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathNodes:
+  nodes:
+  - {x: -10, y: 4.2}
   - {x: -4.5, y: 4.2}
   - {x: -4.5, y: 2.2}
   - {x: -1.7, y: 2.2}
   - {x: -1.7, y: 4.2}
   - {x: 1.5, y: 4.2}
   - {x: 1.5, y: 0.2}
+  - {x: -1.5, y: 0.2}
+  - {x: -1.5, y: -4}
+  - {x: 1.7, y: -4}
+  - {x: 1.7, y: -2.15}
+  - {x: 4.55, y: -2.15}
+  - {x: 4.55, y: -4}
+  - {x: 12, y: -4}
   nodeRadius: 0.25
-  nodeRandomDistance: 0
-  movementSpeed: 1
+  nodeRandomDistance: 1
+  beginAtNode: 1
+  movementSpeed: 4
+--- !u!114 &-341995379179139560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095847539694164338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53e9c54038c88489a0872b593c4ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statTransGroupTemplates:
+  - {fileID: 11400000, guid: c24cdadd8007a904c86a04cdc7caf290, type: 2}
+  stats:
+    entity:
+      sprite: {fileID: 0}
+      health: 1
+      healthMax: 0
+      canMove: 0
+      speed: 0
+    weapon:
+      sprite: {fileID: 0}
+      accuracy: 0
+      fireRate: 0
+      fireProjectileCount: 0
+    projectile:
+      sprite: {fileID: 0}
+      damage: 0
+      moveable: 0
+      speed: 0
+      canHitOtherProjectiles: 0
+      hitType: 0
+      hitAreaRadius: 0
+      destroyOnHit: 0

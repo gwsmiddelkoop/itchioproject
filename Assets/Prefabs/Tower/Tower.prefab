@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53e9c54038c88489a0872b593c4ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statTransGroupTemplate: {fileID: 11400000, guid: ace64f03b31a6bc4c9a5402e7801be01, type: 2}
+  statTransGroupTemplates:
+  - {fileID: 11400000, guid: ace64f03b31a6bc4c9a5402e7801be01, type: 2}
+  - {fileID: 11400000, guid: 110e35a5af3ff444a9b788e5868beaa1, type: 2}
   stats:
     entity:
       sprite: {fileID: 0}
@@ -78,4 +80,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0760d107f5da72d45b045a4ea691a082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetingType: 1
+  targetingType: 2

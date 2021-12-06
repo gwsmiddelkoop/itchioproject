@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> wave = new List<GameObject>();
-
-    [SerializeField] private Vector2 spawnPosition;
+    [SerializeField] private List<EnemyWave> waves = new List<EnemyWave>();
 
     private void Start()
     {
@@ -17,11 +15,14 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            for (int enemyIndex = 0; enemyIndex < wave.Count; enemyIndex++)
+            for (int waveIndex = 0; waveIndex < waves.Count; waveIndex++)
             {
-                EventManager.instance.EnemySpawned(Instantiate(wave[enemyIndex], spawnPosition, Quaternion.identity));
+                for (int enemyIndex = 0; enemyIndex < waves[waveIndex].enemys.Count; enemyIndex++)
+                {
+                    EventManager.instance.EnemySpawned(Instantiate(waves[waveIndex].enemys[enemyIndex]));
 
-                yield return new WaitForSeconds(.5f);
+                    yield return new WaitForSeconds(waves[waveIndex].frequency);
+                }
             }
 
             yield return null;
