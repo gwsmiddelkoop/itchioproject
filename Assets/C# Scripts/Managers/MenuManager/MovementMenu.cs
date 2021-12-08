@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovementMenu : MonoBehaviour
 {
+    [SerializeField]GameObject[] objectScale;
     float horizontal;
     float vertical;
 
@@ -30,7 +31,22 @@ public class MovementMenu : MonoBehaviour
     {
         if (collision.CompareTag("Start"))
         {
+            for (int i = 0; i < objectScale.Length; i++)
+            {
+                objectScale[i].transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            }
             FindObjectOfType<SceneLoader>().LoadScene("SnowFare");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Start"))
+        {
+            for (int i = 0; i < objectScale.Length; i++)
+            {
+                objectScale[i].transform.localScale = new Vector3(1, 1, 1);
+
+            }
         }
     }
 }
