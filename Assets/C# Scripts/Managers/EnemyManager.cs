@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
 
         instance = this;
 
-        EventManager.instance.enemySpawned += AddEnemyToList;
+        EventManager.instance.entitySpawned += AddEnemyToList;
     }
 
     void Update()

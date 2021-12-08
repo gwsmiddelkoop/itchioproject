@@ -33,11 +33,9 @@ public class TowerSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject tower = new GameObject("Tower", typeof(EntityCreator));
-        tower.GetComponent<EntityCreator>().Initialize(towerTemplate);
+        Vector3 position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        tower.transform.parent = trans;
-        tower.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        EventManager.instance.EntitySpawn(new StatTransGroupConverter().Convert(towerTemplate), trans, position);
     }
 
     public void TurnOn()

@@ -10,9 +10,11 @@ public class EventManager : MonoBehaviour
     // Delegates and their events.
     public delegate void EmptyDelegate();
 
+    public delegate void StatTransGroupDelegate(StatTransGroup statTransGroup, Transform parent, Vector3 position);
+    public event StatTransGroupDelegate entitySpawn;
+
     public delegate void GameObjectDelegate(GameObject gameObject);
-    public event GameObjectDelegate enemySpawned;
-    public event GameObjectDelegate towerSpawned;
+    public event GameObjectDelegate entitySpawned;
 
     void Awake()
     {
@@ -25,15 +27,15 @@ public class EventManager : MonoBehaviour
         instance = this;
     }
 
-    public void EnemySpawned(GameObject enemy)
+    public void EntitySpawn(StatTransGroup statTransGroup, Transform parent, Vector3 position)
     {
-        if (enemySpawned != null)
-            enemySpawned(enemy);
+        if (entitySpawn != null)
+            entitySpawn(statTransGroup, parent, position);
     }
 
-    public void TowerSpawned(GameObject tower)
+    public void EntitySpawned(GameObject gameObject)
     {
-        if (towerSpawned != null)
-            towerSpawned(tower);
+        if (entitySpawned != null)
+            entitySpawned(gameObject);
     }
 }

@@ -9,8 +9,6 @@ public enum WeaponTargetingTypes
     player,
 }
 
-
-
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private WeaponTargetingTypes targetingType;

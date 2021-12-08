@@ -21,6 +21,8 @@ MonoBehaviour:
   - rid: 2441891161167102057
   - rid: 2441891161167102058
   - rid: 2441891161167102059
+  - rid: 2441891271531823104
+  - rid: 2441891271531823105
   references:
     version: 2
     RefIds:
@@ -59,3 +61,12 @@ MonoBehaviour:
       type: {class: StatTransName, ns: , asm: Assembly-CSharp}
       data:
         name: Tower-Mini
+    - rid: 2441891271531823104
+      type: {class: StatTransAgeUsage, ns: , asm: Assembly-CSharp}
+      data:
+        usage: 1
+    - rid: 2441891271531823105
+      type: {class: StatTransAge, ns: , asm: Assembly-CSharp}
+      data:
+        transformType: 0
+        amount: 4

@@ -15,8 +15,6 @@ public class EntityController : MonoBehaviour
         stats = statTransGroup.TransformStatGroup();
 
         SetUp();
-
-        GetComponent<EventController>().Die();
     }
 
     private void SetUp()
@@ -62,12 +60,18 @@ public class EntityController : MonoBehaviour
 
             controller.Initialize(stats);
         }
+
+        if (stats.age.usage)
+        {
+            gameObject.AddComponent(typeof(AgeController));
+            AgeController controller = GetComponent<AgeController>();
+
+            controller.Initialize(stats);
+        }
     }
 
     private void Die()
     {
-        Debug.Log("Death");
-
         Destroy(gameObject);
     }
 }

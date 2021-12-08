@@ -9,13 +9,6 @@ public class EventController : MonoBehaviour
     public event EmptyDelegate die;
 
     public delegate void GameObjectDelegate(GameObject gameObject);
-    public event GameObjectDelegate entitySpawned;
-
-    public void EntitySpawned(GameObject enemy)
-    {
-        if (entitySpawned != null)
-            entitySpawned(enemy);
-    }
 
     public void Die()
     {

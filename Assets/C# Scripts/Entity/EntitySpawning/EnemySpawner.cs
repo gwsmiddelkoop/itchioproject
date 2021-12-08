@@ -6,6 +6,13 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<EnemyWave> waves = new List<EnemyWave>();
 
+    private Transform trans;
+
+    private void Awake()
+    {
+        trans = transform;
+    }
+
     private void Start()
     {
         StartCoroutine("WaveSpawner");
@@ -19,7 +26,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 for (int enemyIndex = 0; enemyIndex < waves[waveIndex].enemys.Count; enemyIndex++)
                 {
-                    EventManager.instance.EnemySpawned(Instantiate(waves[waveIndex].enemys[enemyIndex]));
+                    StatTransGroup currentStatTransGroup = new StatTransGroupConverter().Convert(waves[waveIndex].enemys[enemyIndex].statTransGroup);
+
+                    EventManager.instance.EntitySpawn(currentStatTransGroup, trans, Vector3.zero);
 
                     yield return new WaitForSeconds(waves[waveIndex].frequency);
                 }

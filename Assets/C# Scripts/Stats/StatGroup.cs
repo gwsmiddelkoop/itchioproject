@@ -10,6 +10,7 @@ public class StatGroup
     [SerializeField] public StatGroupContact contact = new StatGroupContact();
     [SerializeField] public StatGroupMovement movement = new StatGroupMovement();
     [SerializeField] public StatGroupWeapon weapon = new StatGroupWeapon();
+    [SerializeField] public StatGroupAge age = new StatGroupAge();
 }
 
 [System.Serializable]
@@ -65,4 +66,11 @@ public class StatGroupWeapon
     public int projectileCount;
     public float accuracy;
     public StatTransGroup projectile;
+}
+
+[System.Serializable]
+public class StatGroupAge
+{
+    public bool usage;
+    public float age;
 }
