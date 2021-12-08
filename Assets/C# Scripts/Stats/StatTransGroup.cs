@@ -59,3 +59,28 @@ public class StatTransGroup
         return statGroup;
     }
 }
+
+public class StatTransGroupConverter
+{
+    public StatTransGroup Convert(List<StatTransGroupTemplate> templates)
+    {
+        StatTransGroup statTransGroup = new StatTransGroup();
+
+        for (int templateIndex = 0; templateIndex < templates.Count; templateIndex++)
+        {
+            statTransGroup.AddStatsFromStatList(templates[templateIndex].statTransGroup);
+        }
+
+        return statTransGroup;
+    }
+
+    public StatTransGroup Convert(StatTransGroupTemplate template)
+    {
+        return new StatTransGroup(template.statTransGroup);
+    }
+
+    public StatTransGroup Convert(List<StatTransBase> statTransBases)
+    {
+        return new StatTransGroup(statTransBases);
+    }
+}
