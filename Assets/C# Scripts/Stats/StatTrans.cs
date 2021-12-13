@@ -30,6 +30,9 @@ public enum StatTypes
         WeaponTargetingUsage,
         WeaponTargetingType,
         WeaponTargetingRadius,
+
+    AgeUsage,
+    Age,
 }
 
 public enum ContactTypes
@@ -392,6 +395,39 @@ public class StatTransWeaponProjectile : StatTransBase
         {
             stats.weapon.projectile.AddStatsFromStatList(projectile.statTransGroup);
         }
+
+        return stats;
+    }
+}
+
+// Age
+public class StatTransAgeUsage : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.AgeUsage;
+
+    public bool usage;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        if (usage)
+        {
+            stats.age.usage = true;
+        }
+
+        return stats;
+    }
+}
+
+public class StatTransAge : StatTransBase
+{
+    [HideInInspector] public override StatTypes statType => StatTypes.Age;
+
+    public StatTransformTypes transformType;
+    public float amount;
+
+    public override StatGroup TransformStat(StatGroup stats)
+    {
+        stats.age.age = CalculateTransformType(stats.weapon.accuracy, amount, transformType); ;
 
         return stats;
     }
