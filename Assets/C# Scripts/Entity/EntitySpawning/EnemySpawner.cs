@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("WaveSpawner");
+        StartCoroutine(WaveSpawner());
     }
 
     private IEnumerator WaveSpawner()

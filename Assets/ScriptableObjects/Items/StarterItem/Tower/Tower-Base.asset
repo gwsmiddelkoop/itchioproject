@@ -13,38 +13,38 @@ MonoBehaviour:
   m_Name: Tower-Base
   m_EditorClassIdentifier: 
   statTransGroup:
-  - rid: 2441891137222345015
-  - rid: 2441891137222345016
-  - rid: 2441891137222345017
-  - rid: 2441891137222345018
-  - rid: 2441891137222345019
-  - rid: 2441891137222345020
+  - rid: 2061319648930693318
+  - rid: 2061319648930693319
+  - rid: 2061319648930693320
+  - rid: 2061319648930693321
+  - rid: 2061319648930693322
+  - rid: 2061319648930693323
   references:
     version: 2
     RefIds:
-    - rid: 2441891137222345015
+    - rid: 2061319648930693318
       type: {class: StatTransSpriteUsage, ns: , asm: Assembly-CSharp}
       data:
         usage: 1
-    - rid: 2441891137222345016
+    - rid: 2061319648930693319
       type: {class: StatTransSprite, ns: , asm: Assembly-CSharp}
       data:
-        sprite: {fileID: 21300000, guid: 5d4e9c9fd9ee7224caa57ba5af71d346, type: 3}
-    - rid: 2441891137222345017
+        sprite: {fileID: 21300000, guid: 725828be4b84cb8439831182981763ee, type: 3}
+    - rid: 2061319648930693320
       type: {class: StatTransWeaponUsage, ns: , asm: Assembly-CSharp}
       data:
         usage: 1
-    - rid: 2441891137222345018
+    - rid: 2061319648930693321
       type: {class: StatTransWeaponFireRate, ns: , asm: Assembly-CSharp}
       data:
         transformType: 0
         amount: 2
-    - rid: 2441891137222345019
+    - rid: 2061319648930693322
       type: {class: StatTransWeaponProjectileCount, ns: , asm: Assembly-CSharp}
       data:
         transformType: 0
         amount: 1
-    - rid: 2441891137222345020
+    - rid: 2061319648930693323
       type: {class: StatTransWeaponProjectile, ns: , asm: Assembly-CSharp}
       data:
         projectile: {fileID: 11400000, guid: f1f480777c2fb134c8277d66c8b38031, type: 2}
