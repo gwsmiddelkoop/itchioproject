@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class Mover
 {
-    [Header("Options")]
-    [SerializeField] private float acceleration;
-    [SerializeField] private bool[] blockedAxis = new bool[3];
+    private float acceleration;
+    private bool[] blockedAxis = new bool[3] { false, false, true };
 
     private Vector3 disiredVelocity;
     private Vector3 velocity;
 
-    private Transform mytrans;
+    private Transform trans;
 
-    private void Awake()
+    public void Initialize(MovementController controller, float acceleration)
     {
-        mytrans = transform;
+        trans = controller.transform;
+
+        this.acceleration = acceleration;
+
+        controller.StartCoroutine(MovementTimer());
     }
 
-    void Update()
+    IEnumerator MovementTimer()
     {
-        Move();
+        while (true)
+        {
+            Move();
+
+            yield return null;
+        }
     }
 
     private void Move()
@@ -29,7 +37,7 @@ public class Mover : MonoBehaviour
 
         velocity.Scale(GetBlockedAxisVector());
 
-        mytrans.position += velocity * Mathf.Clamp(Time.deltaTime, 0, 1);
+        trans.position += velocity * Mathf.Clamp(Time.deltaTime, 0, 1);
     }
 
     public void SetDisiredVelocity(Vector3 iDisiredVelocity)

@@ -50,7 +50,10 @@ public class EntityController : MonoBehaviour
 
         if (stats.movement.usage)
         {
+            gameObject.AddComponent(typeof(MovementController));
+            MovementController controller = GetComponent<MovementController>();
 
+            controller.Initialize(stats.movement);
         }
 
         if (stats.weapon.usage)
@@ -66,7 +69,7 @@ public class EntityController : MonoBehaviour
             gameObject.AddComponent(typeof(AgeController));
             AgeController controller = GetComponent<AgeController>();
 
-            controller.Initialize(stats);
+            controller.Initialize(stats.age);
         }
     }
 
