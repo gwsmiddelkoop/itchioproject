@@ -8,13 +8,13 @@ public class AgeController : MonoBehaviour
     // Script connections.
     EventController eventController;
 
-    public void Initialize(StatGroup stats)
+    public void Initialize(StatGroupAge stats)
     {
         eventController = GetComponent<EventController>();
 
         CancelInvoke("Age");
 
-        Invoke("Age", stats.age.age);
+        Invoke("Age", stats.age);
     }
 
     private void Age()
